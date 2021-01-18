@@ -1,0 +1,39 @@
+<div class="general-mrg">
+</div>
+
+<section id="product-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 item-image-parent">
+
+                <div class="item-image-main">
+                    <img [src]=" !data?.image? '../../../../assets/img/logo.jpg': data?.image" onerror="this.src='../../../../assets/img/logo.jpg';" style="height: 300px;" alt="default" />
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6  item-info-parent">
+                <div class="main-info">
+                    <h4>{{data?.title}}</h4>
+                    <div class="star-rating">
+                        <span>★★★★</span>★
+                    </div>
+                    <p>Price: <span id="price">{{data?.price | currency :"EGP"}}</span></p>
+                </div>
+                <div class="select-items">
+
+
+                    <div class="description">
+                        <ul>
+                            <li>{{data?.description}}</li>
+
+                        </ul>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" (click)="addProduct(data)">Add To Card</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

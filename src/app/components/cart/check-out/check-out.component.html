@@ -1,0 +1,109 @@
+<div class="general-mrg">
+</div>
+<div class="container">
+
+    <div class="check-out">
+
+        <div class="row">
+            <div class="col-75">
+                <div class="container">
+                    <form [formGroup]="OrderDetailsForm">
+
+                        <div class="row">
+                            <div class="col-50">
+                                <h3>Billing Address</h3>
+                                <div class="form-group">
+                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" formControlName="address">
+                                    <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('address').valid && (OrderDetailsForm.get('address').dirty || OrderDetailsForm.get('address').touched)">
+                    this feild is required !
+                  </small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="city" name="city" placeholder="New York" formControlName="city">
+                                    <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('city').valid && (OrderDetailsForm.get('city').dirty || OrderDetailsForm.get('city').touched)">
+                    this feild is required !
+                  </small>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-50">
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" id="state" name="state" placeholder="NY" formControlName="state">
+                                            <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('state').valid && (OrderDetailsForm.get('state').dirty || OrderDetailsForm.get('state').touched)">
+                        this feild is required !
+                      </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="form-group">
+                                            <label for="zip">Zip</label>
+                                            <input type="text" id="zip" name="zip" placeholder="10001" formControlName="zip">
+                                            <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('zip').valid && (OrderDetailsForm.get('zip').dirty || OrderDetailsForm.get('zip').touched)">
+                        this feild is required !
+                      </small>
+
+                                            <small class="form-text  danger" *ngIf="OrderDetailsForm.get('zip').errors?.minlength">
+                        minlength is must be 6 ckaracters!!</small>
+                                            <small class="form-text  danger" *ngIf="OrderDetailsForm.get('zip').errors?.maxlength">
+                        maxlength is must be 6 ckaracters!!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-50">
+                                <h3>connection Detais</h3>
+                                <div class="form-group">
+                                    <label for="phone"><i class="fa fa-phone"></i> phone</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="01234567890" class="form-control" formControlName="phone">
+                                    <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('phone').valid && (OrderDetailsForm.get('phone').dirty || OrderDetailsForm.get('phone').touched)">
+                    this feild is required !
+                  </small>
+                                    <small class="form-text  danger" *ngIf="OrderDetailsForm.get('phone').errors?.maxlength">
+                    maxlength is must be 11 number!!</small>
+                                </div>
+                                <div class="form-group">
+                                    <h3>Payment Type </h3>
+                                    <select formControlName="Payment_Type" class="from-control select">
+                                      <option disabled> Select Type:</option>
+
+                    <option value="cash">Cash</option>
+
+                  </select>
+
+                                    <!-- <div ngbDropdown class="d-block ">
+                                        <button class="btn btn-outline-success btn-block" id="dropdownBasic1" ngbDropdownToggle>Payment Type</button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" ormControlName="Payment_Type">
+                                            <button ngbDropdownItem formControlName="Payment_Type" value="1"> Cash </button>
+                                        </div>
+                                    </div> -->
+                                    <small class="form-text  danger" *ngIf="!OrderDetailsForm.get('Payment_Type').valid && (OrderDetailsForm.get('Payment_Type').dirty || OrderDetailsForm.get('Payment_Type').touched)">
+                    this feild is required !
+                  </small>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-black btn-block" (click)="SendNewOrder()"> Continue to checkout</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-25">
+                <div class="container">
+                    <h4>Cart <span class="price" style="color:black">
+                    <i class="fa fa-shopping-cart"></i> <b>{{data?.length}}</b></span></h4>
+                    <div class="loop" *ngFor="let item of data">
+
+                        <p>{{item?.Tbl_Product?.ProductName}} <span class="price">{{item?.Total_Price | currency:'EGP'}}</span></p>
+
+                        <hr>
+                    </div>
+                    <p>Total <span class="price" style="color:black"><b>{{ TotalPrice| currency:'EGP' }}</b></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

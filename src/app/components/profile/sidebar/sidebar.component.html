@@ -1,0 +1,23 @@
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Ahlan {{username}} </div>
+        <div class="list-group list-group-flush" *ngFor="let item of links">
+            <a [routerLink]="item.routerLink" class="{{item.class}} ">{{item.Name}}</a>
+
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button class="btn btn-black d-block d-md-none" id="menu-toggle" (click)="channelChanged($event)"> Menu</button>
+
+        <router-outlet></router-outlet>
+        <h1>click on links to show profile</h1>
+
+
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+
+<!-- /#wrapper -->

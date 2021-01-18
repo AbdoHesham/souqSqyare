@@ -1,0 +1,254 @@
+<div class="general-mrg">
+</div>
+<div class="container " *ngIf="DBlength<1">
+    <div class="text-center m-5">
+        <img src="../../assets/img/empty-state-cart.svg">
+        <h1>Your shopping cart looks empty</h1>
+        <p>What are you waiting for?</p>
+        <button [routerLink]="'/'" class="btn btn-info"> Start Shopping </button>
+    </div>
+</div>
+<!-- <div class="container " *ngIf="CartItems.length<1">
+    <div class="text-center m-5">
+        <img src="../../assets/img/empty-state-cart.svg">
+        <h1>Your shopping cart looks empty</h1>
+        <p>What are you waiting for?</p>
+        <button [routerLink]="'/'" class="btn btn-info"> Start Shopping </button>
+    </div>
+</div> -->
+
+<!-- form display when you get data from data base when user logged  -->
+<div class="card" *ngIf="DBlength>0" [hidden]="!isLogged()">
+
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>Shopping Cart</b></h4>
+                    </div>
+                    <div class="col align-self-center text-right text-muted">{{Cartdata.length}} items</div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom" *ngFor="let item of Cartdata ; let i =index">
+
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="  img hover" [src]=" !item.Tbl_Product.ProductImage? '../../../../assets/img/logo.jpg': item?.Tbl_Product?.ProductImage" onerror="this.src='../../../../assets/img/logo.jpg';" alt="{{item?.Tbl_Product?.ProductName}}" style="width: 70px;height:80px;">
+                    </div>
+                    <div class="col">
+                        <div class="row text-muted">{{item?.Tbl_Product?.ProductName}}</div>
+                        <!-- <div class="row">{{item?.Tbl_Product.Description}}</div> -->
+                    </div>
+                    <div class="col">
+                        <button class="btn  btn-masterd" [disabled]="item?.Tbl_Product?.Quantity<=1" (click)="reduceQty(item?.ProductId , item?.CartDetailsID)" (click)="totalPrice(item.qty,item.Price)">-</button>
+                        <a class="border">{{item?.product_Quantity}}</a>
+                        <button class="btn btn-black" [disabled]="item.qty>=item?.Tbl_Product?.Quantity" (click)="increaseQty(item?.ProductId)" (click)="totalPrice(item.qty,item?.Total_Price)">+</button>
+                    </div>
+                    <div> {{item?.ProductId.Price | currency:'EGP'}} </div>
+                    <span class="fa fa-trash " style="cursor: pointer;" (click)="deleteItem(item?.CartDetailsID)"></span>
+                </div>
+            </div>
+
+            <div class="back-to-shop">
+                <button class="btn btn-black btn-block" [routerLink]="'/'">Back to shop</button></div>
+            <div class="text-center m-4">
+                <button class="btn btn-black " (click)="ClearAllItem()"> <i class="fa fa-trash mr-2"></i>Remove All</button>
+            </div>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Summary</b></h5>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;">ITEMS {{DBlength}}</div>
+                <div class="col text-right"> {{ TotalPrice| currency:'EGP' }}</div>
+            </div>
+
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right"> {{ TotalPrice| currency:'EGP' }}</div>
+            </div>
+            <button class="btn btn-black btn-block" (click)=" addtoCheckOut()">CHECKOUT</button>
+            <!-- data?.CartId -->
+        </div>
+    </div>
+</div>
+
+<!-- form display when you get data from localStorage when user not  logged  -->
+<div class="card" *ngIf="CartItems.length>0" [hidden]="isLogged()">
+
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>Shopping Cart</b></h4>
+                    </div>
+                    <div class="col align-self-center text-right text-muted">{{CartItems.length}} items</div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom" *ngFor="let item of CartItems ; let i =index">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img hover" [src]="item?.ProductImage" alt="{{item?.ProductName}}" style="width: 70px;height:80px;">
+                    </div>
+                    <div class="col">
+                        <div class="row text-muted">{{item?.ProductName}}</div>
+                        <!-- <div class="row">{{item?.Description}}</div> -->
+                    </div>
+                    <div class="col">
+                        <button class=" btn btn-black" [disabled]="item.qty==1" (click)="reduceQty(item.ProductId)" (click)="totalPrice(item.qty,item.Price)">-</button>
+                        <a class="border">{{item.qty}}</a>
+                        <button class=" btn btn-black" [disabled]="item.qty>=item.Quantity" (click)="increaseQty(item.ProductId)" (click)="totalPrice(item.qty,item.Price)">+</button>
+                    </div>
+                    <div> {{item?.Price | currency:'EGP'}} </div>
+                    <span class="fa fa-trash" style="cursor: pointer;" (click)="ClearItem(item?.ProductId)"></span>
+                </div>
+            </div>
+
+            <div class="back-to-shop">
+                <button class="btn btn-black btn-block" [routerLink]="'/'">Back to shop</button></div>
+            <div class="text-center m-4">
+                <button class="btn btn-black " (click)="ClearAllItem()"> <i class="fa fa-trash mr-2"></i>Remove All</button>
+            </div>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Summary</b></h5>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;">ITEMS {{CartItems.length}}</div>
+                <div class="col text-right"> {{ TotalPrice| currency:'EGP' }}</div>
+            </div>
+
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right"> {{ TotalPrice| currency:'EGP' }}</div>
+            </div> <button class="btn btn-black btn-block" (click)=" open(content)">CHECKOUT</button>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">you must login first</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li ngbNavItem>
+                <a ngbNavLink class="btn btn-primary m-3">Login</a>
+                <ng-template ngbNavContent>
+                    <div class="text-center mb-3">
+                        <p>Sign in with:</p>
+                        <!-- <button type="button" class="btn btn-facebook btn-floating mx-1 rounded-circle">
+              <i class="fa fa-facebook"></i>
+            </button> -->
+
+                        <button type="button" (click)="googleLogin()" class="btn btn-danger btn-floating mx-1 rounded-circle">
+              <i class="fa fa-google"></i>
+            </button>
+
+
+                    </div>
+                    <p class="text-center"> or </p>
+
+                    <form [formGroup]="loginForm">
+                        <div class="form-group">
+                            <input class="form-control mb-3" type="email" formControlName="email" placeholder="Email" />
+                            <small class="form-text  danger" *ngIf="!loginForm.get('email').valid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                this feild is required
+              </small>
+                            <small class="form-text  danger" *ngIf="loginForm.get('email').errors?.email">
+                You Must Enter like this Example@mail.com!</small>
+                        </div>
+                        <div class="form-group">
+
+                            <input class="form-control mb-3" formControlName="password" [type]="show ? 'text' : 'password'" placeholder="Password" class="form-control" />
+                            <small class="form-text  danger" *ngIf="!loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                this feild is required
+              </small>
+
+                            <small class="form-text  danger" *ngIf="loginForm.get('password').errors?.minlength">
+                minlength is must be 8 ckaracters!!</small>
+                        </div>
+                        <a style="cursor: pointer;" (click)=" showPass()">show password </a>
+
+                        <hr class="m-10" />
+                        <div class="recover-pass text-center">
+                            <button class="btn btn-masterd  btn-block" (click)="login()" name="login">
+                Login
+              </button>
+                        </div>
+
+                    </form>
+
+
+                </ng-template>
+            </li>
+            <li ngbNavItem>
+                <a ngbNavLink class="btn btn-primary m-3 ">Register</a>
+                <ng-template ngbNavContent>
+
+                    <form [formGroup]="createUser">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                            <small class="form-text  danger" *ngIf="!createUser.get('name').valid && (createUser.get('name').dirty || createUser.get('name').touched)">
+                this feild is required !
+              </small>
+
+                            <small class="form-text  danger" *ngIf="createUser.get('name').errors?.minlength">
+                minlength is must be 4 ckaracters!</small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="Email" class=" form-control " placeholder="Email" formControlName="email">
+
+                            <small class="form-text  danger" *ngIf="!createUser.get('email').valid && (createUser.get('email').dirty || createUser.get('email').touched)">
+                this feild is required
+              </small>
+
+                            <small class="form-text  danger" *ngIf="createUser.get('email').errors?.email">
+                You Must Enter like this Example@mail.com!</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class=" form-control " placeholder="passward" formControlName="password">
+
+                            <small class="form-text  danger" *ngIf="!createUser.get('password').valid && (createUser.get('password').dirty || createUser.get('password').touched)">
+                this feild is required
+              </small>
+
+                            <small class="form-text  danger" *ngIf="createUser.get('password').errors?.minlength">
+                minlength is must be 8 ckaracters!! </small>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class=" form-control " placeholder="Password Confirmation" formControlName="Repassword">
+
+                            <small class="form-text  danger" *ngIf="!createUser.get('Repassword').valid && (createUser.get('Repassword').dirty || createUser.get('Repassword').touched)">
+                this feild is required
+              </small>
+
+                            <small class="form-text  danger" *ngIf="createUser.get('Repassword').errors?.checkPasswords">
+                passward doesn't match</small>
+
+                        </div>
+                        <div class="form-group">
+                            <button class=" btn btn-masterd btn-block " name="save" value="save" (click)="onSubmit()">
+                Create my Account
+              </button>
+                        </div>
+                    </form>
+                </ng-template>
+            </li>
+        </ul>
+        <div [ngbNavOutlet]="nav"></div>
+
+
+    </div>
+
+</ng-template>

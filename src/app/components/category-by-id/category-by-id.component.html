@@ -1,0 +1,33 @@
+<div class="general-mrg">
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 text-center">
+            <h4>category: {{ CatName}}</h4>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 " *ngFor="let prd of category">
+                    <div class="product-grid2">
+                        <div class="product-image2">
+                            <a>
+                                <img class="pic-1" [src]=" !prd.ProductImage? '../../../../assets/img/logo.jpg': prd.ProductImage" onerror="this.src='../../../../assets/img/logo.jpg';">
+                            </a>
+                            <ul class="social">
+                                <li><a data-tip="Quick View" [routerLink]="[ '/product',prd.ProductId ]"><i class="fa fa-eye"></i></a></li>
+                                <li><a data-tip="Add to Cart" (click)="addProduct(prd)"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                            <a class="add-to-cart" (click)="addProduct(prd)">Add to cart</a>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title">{{prd?.ProductName}}</h3>
+                            <span class="price">{{prd?.Price}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 *ngIf="totalLenght < 1" style="text-align:center; padding:50px"> No Data Found
+</h1>

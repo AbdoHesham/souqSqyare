@@ -1,0 +1,39 @@
+<div class="general-mrg">
+</div>
+<div class="container">
+
+    <div class="check-out">
+
+        <div class="row">
+            <div class="col-75">
+                <div class="container">
+                    <div class="col-12 col-md-6">
+                        <p> address: {{address}}</p>
+                        <p> city: {{city}} </p>
+                        <p> state: {{state}}</p>
+                        <p> ZipCode: {{ZipCode}}</p>
+                        <p> phone: {{phone}}</p>
+                        <p>Payment Type : {{Payment_Type}}</p>
+
+
+                    </div>
+                    <button class="btn btn-black btn-block" (click)="getShippingDetailsByUserId()">continue to final step</button>
+                </div>
+            </div>
+            <div class="col-25">
+                <div class="container">
+                    <h4>Cart <span class="price" style="color:black">
+                    <i class="fa fa-shopping-cart"></i> <b>{{data?.length}}</b></span></h4>
+                    <div class="loop" *ngFor="let item of data">
+
+                        <p>{{item?.Tbl_Product?.ProductName}} <span class="price">{{item?.Total_Price | currency:'EGP'}}</span></p>
+
+                        <hr>
+                    </div>
+                    <p>Total <span class="price" style="color:black"><b>{{ TotalPrice| currency:'EGP' }}</b></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
