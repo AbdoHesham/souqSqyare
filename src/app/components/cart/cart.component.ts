@@ -9,8 +9,8 @@ import { HomeService } from 'src/shared/service/Home-Service/home.service';
 import { FooterService } from 'src/shared/service/service-footer/footer.service';
 import { NavService } from 'src/shared/service/service-nav/nav.service';
 import { CartService } from 'src/shared/service/Cart-Service/cart.service';
-import { AngularFireAuth } from  "angularfire2/auth";
-import firebase from 'firebase/app';
+// import { AngularFireAuth } from  "angularfire2/auth";
+// import firebase from 'firebase/app';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -51,8 +51,8 @@ export class CartComponent implements OnInit {
     private toastr: ToastrService,
     private CartService: CartService,
     private fb: FormBuilder,
-    private afAuth:AngularFireAuth,
-    private HomeService:HomeService
+    // private afAuth:AngularFireAuth,
+    // private HomeService:HomeService
 
   ) {
 
@@ -341,24 +341,24 @@ if (reason === ModalDismissReasons.ESC) {
     )
   }}
 
-  googleLogin(){
-    //this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
- }
+//   googleLogin(){
+//     //this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+//     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+//  }
 
- AuthLogin(provider) {
-  return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-      localStorage.setItem('userdata',  JSON.stringify(result))
-      this.router.navigateByUrl('/CheckOut');
-      this.toastr.success('You have been successfully logged in!');
-      this.createUser.reset();
-      this.loginForm.reset();
-      this.modalService.dismissAll();
-    }).catch((error) => {
-       this.toastr.error("Can not login")
-   })
-  }
+//  AuthLogin(provider) {
+//   return this.afAuth.auth.signInWithPopup(provider)
+//     .then((result) => {
+//       localStorage.setItem('userdata',  JSON.stringify(result))
+//       this.router.navigateByUrl('/CheckOut');
+//       this.toastr.success('You have been successfully logged in!');
+//       this.createUser.reset();
+//       this.loginForm.reset();
+//       this.modalService.dismissAll();
+//     }).catch((error) => {
+//        this.toastr.error("Can not login")
+//    })
+//   }
 
 
 

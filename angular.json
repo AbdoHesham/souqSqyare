@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "itiFinalProject": {
+        "souqSqyare": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/itiFinalProject",
+                        "outputPath": "dist/souqSqyare",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "itiFinalProject:build"
+                        "browserTarget": "souqSqyare:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "itiFinalProject:build:production"
+                            "browserTarget": "souqSqyare:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "itiFinalProject:build"
+                        "browserTarget": "souqSqyare:build"
                     }
                 },
                 "test": {
@@ -114,18 +114,18 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "itiFinalProject:serve"
+                        "devServerTarget": "souqSqyare:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "itiFinalProject:serve:production"
+                            "devServerTarget": "souqSqyare:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "itiFinalProject",
+    "defaultProject": "souqSqyare",
     "cli": {
         "analytics": "c92175ca-8867-4940-9695-7247fd2e1a83"
     }

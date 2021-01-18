@@ -5,8 +5,8 @@ import { HttpResponse } from "@angular/common/http";
 import { AuthService } from "../../../shared/service/Auth-service/auth.service";
 import { ToastrService } from 'ngx-toastr';
 import { FooterService } from 'src/shared/service/service-footer/footer.service';
-import { AngularFireAuth } from  "angularfire2/auth";
-import firebase from 'firebase/app';
+// import { AngularFireAuth } from  "angularfire2/auth";
+// import firebase from 'firebase/app';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private fg: FormBuilder,
     public authService: AuthService,
     private toastr: ToastrService,
-    private afAuth:AngularFireAuth
+    // private afAuth:AngularFireAuth
 
 
 
@@ -57,22 +57,22 @@ export class LoginComponent implements OnInit {
   //   return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
   // }
 
-  googleLogin(){
-     //this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-  }
+  // googleLogin(){
+  //    //this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  //    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  // }
 
-  AuthLogin(provider) {
-   return this.afAuth.auth.signInWithPopup(provider)
-     .then((result) => {
-       localStorage.setItem('userdata',  JSON.stringify(result))
-         this.router.navigateByUrl('/');
-         this.toastr.success('You have been successfully logged in!');
+  // AuthLogin(provider) {
+  //  return this.afAuth.auth.signInWithPopup(provider)
+  //    .then((result) => {
+  //      localStorage.setItem('userdata',  JSON.stringify(result))
+  //        this.router.navigateByUrl('/');
+  //        this.toastr.success('You have been successfully logged in!');
 
-     }).catch((error) => {
-        this.toastr.error("Can not login")
-    })
-   }
+  //    }).catch((error) => {
+  //       this.toastr.error("Can not login")
+  //   })
+  //  }
 
 
   login() {

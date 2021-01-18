@@ -17,13 +17,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ThanksComponent } from '../cart/check-out/thanks/thanks.component';
 
-import { AngularFireModule } from 'angularfire2';
-// for AngularFireDatabase
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-// for AngularFireAuth
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from 'src/environments/environment';
-import { SwiperModule } from 'swiper/angular';
+// import { AngularFireModule } from 'angularfire2';
+// // for AngularFireDatabase
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+// // for AngularFireAuth
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { environment } from 'src/environments/environment';
+// import { SwiperModule } from 'swiper/angular';
 import { FinalstepComponent } from '../cart/check-out/finalstep/finalstep.component';
 
 @NgModule({
@@ -50,11 +50,11 @@ import { FinalstepComponent } from '../cart/check-out/finalstep/finalstep.compon
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    AngularFireAuthModule,
-    AngularFireModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    SwiperModule
+    // AngularFireAuthModule,
+    // AngularFireModule,
+    // AngularFireDatabaseModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // SwiperModule
   ]
 })
 export class LayoutModule { }

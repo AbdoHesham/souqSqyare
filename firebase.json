@@ -1,10 +1,10 @@
 {
-  "hosting": {
-    "public": "dist/itiFinalProject",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  }
+    "hosting": {
+        "public": "dist/souqSqyare",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
 }
