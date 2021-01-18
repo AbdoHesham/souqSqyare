@@ -8,14 +8,14 @@
         <button [routerLink]="'/'" class="btn btn-info"> Start Shopping </button>
     </div>
 </div>
-<!-- <div class="container " *ngIf="CartItems.length<1">
+<div class="container " *ngIf="CartItems.length<1">
     <div class="text-center m-5">
         <img src="../../assets/img/empty-state-cart.svg">
         <h1>Your shopping cart looks empty</h1>
         <p>What are you waiting for?</p>
         <button [routerLink]="'/'" class="btn btn-info"> Start Shopping </button>
     </div>
-</div> -->
+</div>
 
 <!-- form display when you get data from data base when user logged  -->
 <div class="card" *ngIf="DBlength>0" [hidden]="!isLogged()">
