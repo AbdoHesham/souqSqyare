@@ -90,7 +90,8 @@
             </div>
             <div class="row border-top border-bottom" *ngFor="let item of CartItems ; let i =index">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img hover" [src]=" !item.Tbl_Product.ProductImage? '../../../../assets/img/logo.jpg': item?.Tbl_Product?.ProductImage" onerror="this.src='../../../../assets/img/logo.jpg';" alt="{{item?.ProductName}}" style="width: 70px;height:80px;">
+                    <div class="col-2"><img class="img hover" src="../../../../assets/img/logo.jpg" onerror="this.src='../../../../assets/img/logo.jpg';" alt="{{item?.ProductName}}" style="width: 70px;height:80px;">
+                        <!--  [src]=" !item.Tbl_Product.ProductImage? '../../../../assets/img/logo.jpg': item?.Tbl_Product?.ProductImage" -->
                     </div>
                     <div class="col">
                         <div class="row text-muted">{{item?.ProductName}}</div>
