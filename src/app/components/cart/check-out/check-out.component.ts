@@ -30,7 +30,7 @@ export class CheckOutComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalPrice(this.TotalPrice)
-    this. getCartDetails();
+    // this. getCartDetails();
     this.nav.show();
     this.ftr.show();
     this.OrderDetailsForm = this.fb.group({

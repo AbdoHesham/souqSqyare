@@ -61,7 +61,9 @@ export class CartComponent implements OnInit {
     config.keyboard = false;
   }
   ngOnInit() {
-    this.getCartDetails()
+    this.getFromLocalStorage()
+
+    // this.getCartDetails()
     this.nav.show();
     this.ftr.hide();
     this.createUser = this.fb.group({

@@ -27,8 +27,8 @@ TotalPrice;
     ) { }
 
   ngOnInit(): void {
-    this.getCartDetails();
-    this.getShippingDetailsByUserId();
+    // this.getCartDetails();
+    // this.getShippingDetailsByUserId();
   }
 
   getCartDetails(){
