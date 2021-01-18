@@ -86,12 +86,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-black btn-block" (click)="SendNewOrder()"> Continue to checkout</button>
+                        <button class="btn btn-black btn-block" [routerLink]="'/Finalstep'"> Continue to checkout</button>
+                        <!-- (click)="SendNewOrder()" -->
                     </form>
                 </div>
             </div>
             <div class="col-25">
-                <div class="container">
+                <!-- <div class="container">
                     <h4>Cart <span class="price" style="color:black">
                     <i class="fa fa-shopping-cart"></i> <b>{{data?.length}}</b></span></h4>
                     <div class="loop" *ngFor="let item of data">
@@ -102,7 +103,7 @@
                     </div>
                     <p>Total <span class="price" style="color:black"><b>{{ TotalPrice| currency:'EGP' }}</b></span></p>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
