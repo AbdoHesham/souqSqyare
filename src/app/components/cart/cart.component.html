@@ -90,23 +90,23 @@
             </div>
             <div class="row border-top border-bottom" *ngFor="let item of CartItems ; let i =index">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img hover" src="../../../../assets/img/logo.jpg" onerror="this.src='../../../../assets/img/logo.jpg';" alt="{{item?.ProductName}}" style="width: 70px;height:80px;">
+                    <div class="col-2"><img class="img hover" [src]=" !item?.image? '../../../../assets/img/logo.jpg': item?.image" onerror="this.src='../../../../assets/img/logo.jpg';" alt="{{item?.title}}" style="width: 70px;height:80px;">
                         <!--  [src]=" !item.Tbl_Product.ProductImage? '../../../../assets/img/logo.jpg': item?.Tbl_Product?.ProductImage" -->
                     </div>
                     <div class="col">
-                        <div class="row text-muted">{{item?.ProductName}}</div>
+                        <div class="row text-muted">{{item?.title}}</div>
                         <!-- <div class="row">{{item?.Description}}</div> -->
                     </div>
                     <div class="col">
-                        <button class=" btn btn-black" [disabled]="item.qty==1" (click)="reduceQty(item.ProductId)" (click)="totalPrice(item.qty,item.Price)">-</button>
-                        <a class="border">{{item.qty}}</a>
-                        <button class=" btn btn-black" [disabled]="item.qty>=item.Quantity" (click)="increaseQty(item.ProductId)" (click)="totalPrice(item.qty,item.Price)">+</button>
+                        <button class=" btn btn-black" [disabled]="item.qty==1" (click)="reduceQty(item.id)">-</button>
+                        <a class="border" #quantity>{{item.qty}}</a>
+                        <button class=" btn btn-black" [disabled]="item.qty==10" (click)="increaseQty(item.id)">+</button>
                     </div>
-                    <div> {{item?.Price | currency:'EGP'}} </div>
-                    <span class="fa fa-trash" style="cursor: pointer;" (click)="ClearItem(item?.ProductId)"></span>
+                    <div #price> {{item?.price * item.qty | currency:'EGP'}} </div>
+                    <span class="fa fa-trash" style="cursor: pointer;" (click)="ClearItem(item)"></span>
                 </div>
-            </div>
 
+            </div>
             <div class="back-to-shop">
                 <button class="btn btn-black btn-block" [routerLink]="'/'">Back to shop</button></div>
             <div class="text-center m-4">
@@ -124,8 +124,11 @@
             </div>
 
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right"> {{ TotalPrice| currency:'EGP' }}</div>
+                <!-- <button class="btn btn-primary" (click)="totalPrice(price.value,quantity.value)"> get total</button>  -->
+                {{ TotalPrice| currency:'EGP' }}</div>
+
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">
             </div> <button class="btn btn-black btn-block" [routerLink]="'/CheckOut'">CHECKOUT</button>
             <!-- (click)=" open(content)" -->
         </div>

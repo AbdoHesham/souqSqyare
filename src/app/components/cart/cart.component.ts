@@ -40,6 +40,7 @@ export class CartComponent implements OnInit {
   id: any;
   CartId: any;
   Cartdata;
+  price;
   constructor(
     public ftr: FooterService,
     public nav: NavService,
@@ -62,7 +63,7 @@ export class CartComponent implements OnInit {
   }
   ngOnInit() {
     this.getFromLocalStorage()
-
+this.totalPrice(this.price)
     // this.getCartDetails()
     this.nav.show();
     this.ftr.hide();
@@ -124,24 +125,23 @@ export class CartComponent implements OnInit {
 
 //----------------------functions for cart  logic ----------------------------
 
-  totalPrice(price: number, count: number) {
-     this.TotalPrice = price * count;
-     return this.TotalPrice
+  totalPrice(price: number) {
+   return  this.TotalPrice = price + price;
 
   }
 
 
 
-  ClearItem(id ) {
+  ClearItem(item ) {
       let myArray=[]
       myArray =(JSON.parse( localStorage.getItem('CartItems')));
-      myArray = myArray.filter( (v)=>{return v.ProductId != id.ProductId});
+      myArray = myArray.filter( (v)=>{return v.id !== item.id});
       localStorage.setItem('CartItems',JSON.stringify( myArray))
-      this.CartItems.splice(id, 1)
-      this.toastr.success(id.ProductName+' is deleted successfully ')
+      this.CartItems.splice(item, 1)
+      this.toastr.success(item.title +' is deleted successfully ')
 
   }
-
+//delete item from data base
   deleteItem(CartDetailsID){
     this.CartDetailsID= CartDetailsID
     console.log(this.CartDetailsID)
@@ -162,7 +162,6 @@ export class CartComponent implements OnInit {
 
 
   ClearAllItem(pid) {
-    this.CartItems.splice(pid)
     localStorage.removeItem('CartItems');
 
   }
@@ -170,7 +169,7 @@ export class CartComponent implements OnInit {
   reduceQty(id,CartDetailsID?) {
     if(!localStorage.getItem('userdata')){
       for (let i in this.CartItems) {
-        if (this.CartItems[i].ProductId === id) {
+        if (this.CartItems[i].id === id) {
           this.CartItems[i].qty--
 
         }
@@ -194,7 +193,7 @@ export class CartComponent implements OnInit {
   increaseQty(id) {
     if(!localStorage.getItem('userdata')){
       for (let i in this.CartItems) {
-        if (this.CartItems[i].ProductId === id) {
+        if (this.CartItems[i].id === id) {
           this.CartItems[i].qty++
         }
       }
