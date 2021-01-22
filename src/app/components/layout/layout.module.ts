@@ -16,6 +16,8 @@ import { CategoryByIdComponent } from '../category-by-id/category-by-id.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ThanksComponent } from '../cart/check-out/thanks/thanks.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 // import { AngularFireModule } from 'angularfire2';
 // // for AngularFireDatabase
@@ -50,6 +52,7 @@ import { FinalstepComponent } from '../cart/check-out/finalstep/finalstep.compon
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
+    NgxSpinnerModule
     // AngularFireAuthModule,
     // AngularFireModule,
     // AngularFireDatabaseModule,

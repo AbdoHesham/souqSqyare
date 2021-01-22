@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {Iproduct}from'../../../../shared/models/Iproduct';
 import {HomeService}from'../../../../shared/service/Home-Service/home.service';
 import { CartService } from 'src/shared/service/Cart-Service/cart.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +23,7 @@ cartDetails={}
     private HomeService:HomeService,
     private toastr: ToastrService,
     private CartService: CartService,
-
+    private spinner: NgxSpinnerService,
     ) { }
 
   ngOnInit(): void {
@@ -30,9 +31,11 @@ this. getProducts();
   }
 //
 getProducts(){
+  this.spinner.show()
   this.HomeService.getAllProducts().subscribe(
     res=>{
       this.data=res
+      this.spinner.hide()
       console.log(this.data);
       // for (let i in this.data) {
       //   this.CartDetailsID = this.data[i]['Cart_Details'][0].CartDetailsID;

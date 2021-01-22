@@ -55,7 +55,7 @@
                     <a [routerLink]="'/Cart'" routerLinkActive="style_with_links_nav" title="Cart" class="cartLink nav-link"><span >
                     Cart</span><div class="cartIconContainer">
                       <img alt="cart" src="https://a.nooncdn.com/s/app/com/noon/icons/cart.svg" class="cartIcon">
-                      <div style="transition: opacity 300ms ease-in-out 0s; opacity: 1;"><div class="counter" >{{count?.length}}</div></div></div></a>
+                      <div style="transition: opacity 300ms ease-in-out 0s; opacity: 1;"><div class="counter" >{{ !count?0: count}}</div></div></div></a>
                 </li>
             </ul>
 

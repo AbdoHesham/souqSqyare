@@ -15,7 +15,7 @@ import { Iproduct } from '../models/Iproduct';
 export class NavbarComponent implements OnInit {
   public isMenuCollapsed = true;
   products:Iproduct;
-  count=[]
+  count:number
   constructor(
     private router: Router,
     private toastr: ToastrService,
@@ -24,7 +24,9 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.count= JSON.parse(localStorage.getItem('CartItems'));
+    this.count= JSON.parse(localStorage.getItem('CartItems')).length;
+    console.log(this.count);
+
   }
 
   logout() {

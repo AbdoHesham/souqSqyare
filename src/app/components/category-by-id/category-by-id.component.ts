@@ -51,14 +51,14 @@ export class CategoryByIdComponent implements OnInit {
     );
   }
 
-  addProduct(product: Iproduct ) {
+  addProduct(product: any ) {
     if(!localStorage.getItem('userdata')){
       let productItems = [];
       if (localStorage.getItem('CartItems')) {
         productItems = JSON.parse(localStorage.getItem('CartItems')); // get product list
 
         for (let i in productItems) {
-          if (productItems[i].ProductId === product.ProductId) {
+          if (productItems[i].id === product.id) {
             this.toastr.error('you are trying to Add item already in card !')
             return localStorage.setItem('CartItems', JSON.stringify(productItems));
 
@@ -68,12 +68,12 @@ export class CategoryByIdComponent implements OnInit {
       }
       productItems.push(
         {
-          ProductId: product.ProductId,
-          ProductName: product.ProductName,
-          Description: product.Description,
-          Price: product.Price,
-          Quantity: product.Quantity,
-          ProductImage: product.ProductImage,
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          // Quantity: product.Quantity,
+          image: product.image,
           qty: 1
         }
       );

@@ -7,6 +7,7 @@ import { FooterService } from 'src/shared/service/service-footer/footer.service'
 import { NavService } from 'src/shared/service/service-nav/nav.service';
 import{HomeService}from'../../../shared/service/Home-Service/home.service'
 import { CartService } from 'src/shared/service/Cart-Service/cart.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -28,6 +29,7 @@ data;
     private HomeService:HomeService,
     private toastr: ToastrService,
     private CartService: CartService,
+    private spinner: NgxSpinnerService,
 
     ) { }
 
@@ -40,12 +42,13 @@ data;
 
 
   getProductById(){
+    this.spinner.show()
     console.log(this.id);
 
     this.HomeService.getProductById(this.id).subscribe(
 
       res=>{
-
+this.spinner.hide()
         this.data=res as Iproduct
 //  this. arr = Object.keys(this.data);
 //  this. arr2 = Object.values(this.data);
@@ -62,14 +65,14 @@ data;
     )
   }
 
-  addProduct(product: Iproduct ) {
+  addProduct(product: any ) {
     if(!localStorage.getItem('userdata')){
       let productItems = [];
       if (localStorage.getItem('CartItems')) {
         productItems = JSON.parse(localStorage.getItem('CartItems')); // get product list
 
         for (let i in productItems) {
-          if (productItems[i].ProductId === product.ProductId) {
+          if (productItems[i].id === product.id) {
             this.toastr.error('you are trying to Add item already in card !')
             return localStorage.setItem('CartItems', JSON.stringify(productItems));
 
@@ -79,12 +82,12 @@ data;
       }
       productItems.push(
         {
-          ProductId: product.ProductId,
-          ProductName: product.ProductName,
-          Description: product.Description,
-          Price: product.Price,
-          Quantity: product.Quantity,
-          ProductImage: product.ProductImage,
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          // Quantity: product.Quantity,
+          image: product.image,
           qty: 1
         }
       );
