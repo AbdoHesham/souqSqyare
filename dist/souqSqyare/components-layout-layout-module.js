@@ -203,7 +203,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _cart_check_out_thanks_thanks_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../cart/check-out/thanks/thanks.component */ "Zoew");
-/* harmony import */ var _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../cart/check-out/finalstep/finalstep.component */ "idLh");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
+/* harmony import */ var _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../cart/check-out/finalstep/finalstep.component */ "idLh");
+
 
 
 
@@ -241,6 +243,12 @@ LayoutModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
             _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_14__["NgbModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_17__["NgxSpinnerModule"]
+            // AngularFireAuthModule,
+            // AngularFireModule,
+            // AngularFireDatabaseModule,
+            // AngularFireModule.initializeApp(environment.firebase),
+            // SwiperModule
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](LayoutModule, { declarations: [_layout_component__WEBPACK_IMPORTED_MODULE_3__["LayoutComponent"],
         _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"],
@@ -252,13 +260,20 @@ LayoutModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
         _home_product_list_product_list_component__WEBPACK_IMPORTED_MODULE_12__["ProductListComponent"],
         _category_by_id_category_by_id_component__WEBPACK_IMPORTED_MODULE_13__["CategoryByIdComponent"],
         _cart_check_out_thanks_thanks_component__WEBPACK_IMPORTED_MODULE_16__["ThanksComponent"],
-        _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_17__["FinalstepComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+        _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_18__["FinalstepComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
         _layout_routing_module__WEBPACK_IMPORTED_MODULE_2__["LayoutRoutingModule"],
         ngx_shimmer_loading__WEBPACK_IMPORTED_MODULE_8__["NgxShimmerLoadingModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
         _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_14__["NgbModule"],
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"]] }); })();
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
+        ngx_spinner__WEBPACK_IMPORTED_MODULE_17__["NgxSpinnerModule"]
+        // AngularFireAuthModule,
+        // AngularFireModule,
+        // AngularFireDatabaseModule,
+        // AngularFireModule.initializeApp(environment.firebase),
+        // SwiperModule
+    ] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LayoutModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
@@ -272,7 +287,7 @@ LayoutModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
                     _home_product_list_product_list_component__WEBPACK_IMPORTED_MODULE_12__["ProductListComponent"],
                     _category_by_id_category_by_id_component__WEBPACK_IMPORTED_MODULE_13__["CategoryByIdComponent"],
                     _cart_check_out_thanks_thanks_component__WEBPACK_IMPORTED_MODULE_16__["ThanksComponent"],
-                    _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_17__["FinalstepComponent"],
+                    _cart_check_out_finalstep_finalstep_component__WEBPACK_IMPORTED_MODULE_18__["FinalstepComponent"],
                 ],
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
@@ -282,6 +297,12 @@ LayoutModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
                     _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
                     _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_14__["NgbModule"],
                     _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
+                    ngx_spinner__WEBPACK_IMPORTED_MODULE_17__["NgxSpinnerModule"]
+                    // AngularFireAuthModule,
+                    // AngularFireModule,
+                    // AngularFireDatabaseModule,
+                    // AngularFireModule.initializeApp(environment.firebase),
+                    // SwiperModule
                 ]
             }]
     }], null, null); })();

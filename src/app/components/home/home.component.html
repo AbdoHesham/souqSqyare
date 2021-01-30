@@ -46,7 +46,7 @@
         <div class="col-md-3 ">
 
             <div ngbDropdown class="d-block d-lg-none mb-5">
-                <button class="btn btn-masterd btn-block" id="dropdownBasic1" ngbDropdownToggle>All Categories</button>
+                <button class=" btn-block" style="background-color: rgb(254, 222 ,0)" id="dropdownBasic1" ngbDropdownToggle>All Categories</button>
                 <div ngbDropdownMenu aria-labelledby="down">
                     <button ngbDropdownItem class="form-control" *ngFor="let cat of CatData" value="cat.CategoryId" [routerLink]="['/Category',cat.CategoryId]">{{cat}}</button>
                 </div>
