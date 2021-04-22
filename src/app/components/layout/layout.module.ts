@@ -18,14 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ThanksComponent } from '../cart/check-out/thanks/thanks.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-
-// import { AngularFireModule } from 'angularfire2';
-// // for AngularFireDatabase
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
-// // for AngularFireAuth
-// import { AngularFireAuthModule } from 'angularfire2/auth';
-// import { environment } from 'src/environments/environment';
-// import { SwiperModule } from 'swiper/angular';
 import { FinalstepComponent } from '../cart/check-out/finalstep/finalstep.component';
 
 @NgModule({

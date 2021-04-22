@@ -14,7 +14,7 @@ export const environment = {
   //   measurementId: "G-ZWDW0FM3F4"
   // },
   loginUrl:"https://reqres.in/",
-  baseUrl:"https://fakestoreapi.herokuapp.com/"
+  baseUrl:"https://fakestoreapi.com/"
 
 };
 

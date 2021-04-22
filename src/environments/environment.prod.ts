@@ -9,6 +9,6 @@ export const environment = {
   //   appId: "1:542291816123:web:1c9d3aea4f95b75113039e",
   //   measurementId: "G-ZWDW0FM3F4"
   // },
-  baseUrl:"https://fakestoreapi.herokuapp.com/"
+  baseUrl:"https://fakestoreapi.com/"
 
 };

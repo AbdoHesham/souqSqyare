@@ -38,21 +38,21 @@
                       Login & registeration
                   </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-                        <a ngbDropdownItem [routerLink]="'auth/login'" (click)="$event.preventDefault()">sign in  <i class="fa fa-user"></i></a>
-                        <a ngbDropdownItem [routerLink]="'auth/register'" (click)="$event.preventDefault()">sign up </a>
+                        <a ngbDropdownItem [routerLink]="'auth/login'" (click)="isMenuCollapsed = true" (click)="$event.preventDefault()">sign in  <i class="fa fa-user"></i></a>
+                        <a ngbDropdownItem [routerLink]="'auth/register'" (click)="isMenuCollapsed = true" (click)="$event.preventDefault()">sign up </a>
                     </div>
                 </li>
                 <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right" [hidden]="!isLogged()">
-                    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+                    <a class="nav-link" tabindex="0" (click)="isMenuCollapsed = true" ngbDropdownToggle id="navbarDropdown3" role="button">
                        Account
                  </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-                        <a ngbDropdownItem [routerLink]="'/profile'" (click)="$event.preventDefault()">profile </a>
-                        <a ngbDropdownItem (click)=" logout()">log out  </a>
+                        <a ngbDropdownItem [routerLink]="'/profile'" (click)="isMenuCollapsed = true" (click)="$event.preventDefault()">profile </a>
+                        <a ngbDropdownItem (click)="isMenuCollapsed = true" (click)=" logout()">log out  </a>
                     </div>
                 </li>
                 <li class="nav-item text-center">
-                    <a [routerLink]="'/Cart'" routerLinkActive="style_with_links_nav" title="Cart" class="cartLink nav-link"><span >
+                    <a [routerLink]="'/Cart'" (click)="isMenuCollapsed = true" routerLinkActive="style_with_links_nav" title="Cart" class="cartLink nav-link"><span >
                     Cart</span><div class="cartIconContainer">
                       <img alt="cart" src="https://a.nooncdn.com/s/app/com/noon/icons/cart.svg" class="cartIcon">
                       <div style="transition: opacity 300ms ease-in-out 0s; opacity: 1;"><div class="counter" >{{ !count?0: count}}</div></div></div></a>
