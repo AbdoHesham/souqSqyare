@@ -42,7 +42,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
   ],
   providers: [
-      {  provide:LocationStrategy , useClass:HashLocationStrategy , multi: true },
+      {  provide:LocationStrategy , useClass:HashLocationStrategy  },
       AuthGuard
 
   ],
