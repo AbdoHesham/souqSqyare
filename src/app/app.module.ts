@@ -42,7 +42,8 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
   ],
   providers: [
-      {  provide: LocationStrategy&& HTTP_INTERCEPTORS, useClass:HashLocationStrategy && InterceptorInterceptor  , multi: true },
+      {  provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor && HashLocationStrategy, multi: true },
+      {provide:LocationStrategy,useClass:HashLocationStrategy},
       AuthGuard
 
   ],
