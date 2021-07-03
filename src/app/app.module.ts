@@ -15,6 +15,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import{InterceptorInterceptor}from '../shared/interceptor/interceptor.interceptor'
 import { LayoutRoutingModule } from './components/layout/layout-routing.module';
 import { AuthGuard } from 'src/shared/service/Auth-service/auth-guard.service';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 /* Firebase services */
 
 
@@ -40,7 +42,7 @@ import { AuthGuard } from 'src/shared/service/Auth-service/auth-guard.service';
 
   ],
   providers: [
-      {  provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
+      {  provide: LocationStrategy&& HTTP_INTERCEPTORS, useClass:HashLocationStrategy && InterceptorInterceptor  , multi: true },
       AuthGuard
 
   ],
