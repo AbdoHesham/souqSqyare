@@ -18,7 +18,7 @@ import { CartService } from 'src/shared/service/Cart-Service/cart.service';
 })
 export class CartComponent implements OnInit {
   product;
-  TotalPrice = 0;
+  // TotalPrice = 0;
   AllTotalPrice;
 
   result;
@@ -41,6 +41,8 @@ export class CartComponent implements OnInit {
   CartId: any;
   Cartdata;
   price;
+   TotalPrice=0;  
+  private value;  
   constructor(
     public ftr: FooterService,
     public nav: NavService,
@@ -56,6 +58,8 @@ export class CartComponent implements OnInit {
     // private HomeService:HomeService
 
   ) {
+    this.sumTotal(this.CartItems);  
+
 
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
@@ -63,7 +67,9 @@ export class CartComponent implements OnInit {
   }
   ngOnInit() {
     this.getFromLocalStorage()
-this.totalPrice(this.price)
+// this.totalPrice(this.price)
+this.sumTotal(this.CartItems);  
+
     // this.getCartDetails()
     this.nav.show();
     this.ftr.hide();
@@ -88,23 +94,23 @@ this.totalPrice(this.price)
   }
 
   getCartDetails(){
-    if(localStorage.getItem('userdata')){
-      this.memberId=JSON.parse(localStorage.getItem('userdata')).UserID
+    // if(localStorage.getItem('userdata')){
+    //   this.memberId=JSON.parse(localStorage.getItem('userdata')).UserID
 
-      this.CartService.getCartDetails(this.memberId).subscribe(
-        res=>{
-          this.Cartdata=res
-          console.log(res);
-          this.DBlength=this.Cartdata.length
-        },
-        err=>{
-          console.log(err);
-        }
-      )
-    }
-    else {
+    //   this.CartService.getCartDetails(this.memberId).subscribe(
+    //     res=>{
+    //       this.Cartdata=res
+    //       console.log(res);
+    //       this.DBlength=this.Cartdata.length
+    //     },
+    //     err=>{
+    //       console.log(err);
+    //     }
+    //   )
+    // }
+    // else {
       this.getFromLocalStorage()
-    }
+    // }
 
 
   }
@@ -121,14 +127,21 @@ this.totalPrice(this.price)
     }
   }
 
+  sumTotal(data){  
+    this.value=data  
+    for(let j=0;j<data.length;j++){  
+         this.TotalPrice+= this.value[j].price  
+         }  
 
+  }  
 
 //----------------------functions for cart  logic ----------------------------
 
-  totalPrice(price: number) {
-   return  this.TotalPrice = price + price;
+  // totalPrice(price: number) {
+    
+  //  return  this.TotalPrice = price + price;
 
-  }
+  // }
 
 
 
@@ -161,29 +174,16 @@ this.totalPrice(this.price)
 
 
 
-  ClearAllItem(pid) {
-    localStorage.removeItem('CartItems');
+  ClearAllItem() {
+(localStorage.getItem('CartItems'))&&localStorage.removeItem('CartItems')
 
   }
 
-  reduceQty(id,CartDetailsID?) {
-    if(!localStorage.getItem('userdata')){
-      for (let i in this.CartItems) {
-        if (this.CartItems[i].id === id) {
-          this.CartItems[i].qty--
+  reduceQty(id) {
+    for (let i in this.CartItems) {
+      if (this.CartItems[i].id === id) {
+        this.CartItems[i].qty--
 
-        }
-      }
-    }
-
-    else {
-      this.CartDetailsID=CartDetailsID
-      console.log(this.CartDetailsID)
-   for (let i in this.data) {
-        if (this.data[i].ProductId === id) {
-          console.log(this.data[i].ProductId);
-          this.data[i].product_Quantity--
-        }
       }
     }
 
@@ -191,21 +191,11 @@ this.totalPrice(this.price)
   }
 
   increaseQty(id) {
-    if(!localStorage.getItem('userdata')){
-      for (let i in this.CartItems) {
-        if (this.CartItems[i].id === id) {
-          this.CartItems[i].qty++
-        }
+    for (let i in this.CartItems) {
+      if (this.CartItems[i].id === id) {
+        this.CartItems[i].qty++
       }
     }
-
-    else {
-      for (let i in this.data) {
-           if (this.data[i].ProductId === id) {
-             this.data[i].product_Quantity++
-           }
-         }
-       }
   }
 
 

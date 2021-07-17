@@ -17,7 +17,7 @@
             <div class="input-icons">
                 <i class="fa fa-search text-muted icon"></i>
                 <!-- (input)="searchInputonKey(searchInput.value)"  -->
-                <input type="text" #searchInput id="searchBar" data-qa="txt_searchBar" class="input-field search-Inp" placeholder="search" autocomplete="off" value="">
+                <input type="text" #searchInput id="searchBar" data-qa="txt_searchBar" (keyup)="SearchService.value.next($event.target.value)" class="input-field search-Inp" placeholder="search" autocomplete="off" value="">
 
             </div>
             <ul class="navbar-nav ">
@@ -43,7 +43,7 @@
                     </div>
                 </li>
                 <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right" [hidden]="!isLogged()">
-                    <a class="nav-link" tabindex="0" (click)="isMenuCollapsed = true" ngbDropdownToggle id="navbarDropdown3" role="button">
+                    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
                        Account
                  </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">

@@ -6,19 +6,22 @@ import { OrdersComponent } from './orders/orders.component';
 import { PersonalinfoComponent } from './personalinfo/personalinfo.component';
 
 import { ProfileComponent } from './profile.component';
-import{AuthGuard}from '../../../shared/service/Auth-service/auth-guard.service'
 
 const routes: Routes = [
-  {path: '', redirectTo: '/personalinfo', pathMatch: 'full'},
+  {path: '', redirectTo: 'profile', pathMatch: 'full'},
 
 
   {path: 'profile',component: ProfileComponent,
   // canActivate: [AuthGuard],
   children: [
     {
-       path: 'personalinfo',
+       path: '' ,
        component: PersonalinfoComponent
     },
+    {
+      path: 'personalinfo',
+      component: PersonalinfoComponent
+   },
     {
       path: 'orders',
       component: OrdersComponent
@@ -41,7 +44,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    AuthGuard
 
 ],
 })

@@ -12,7 +12,7 @@ export class AuthService {
   headeroption;
   token;
   isLoggedIn$:Observable<boolean>
-  baseUrl=environment.baseUrl
+  baseUrl=environment.loginUrl
   OAuthProvider: any;
 
   // api/login
@@ -40,10 +40,10 @@ export class AuthService {
   }
 
   signIn($userCredentials): Observable<any> {
-    return this.http.post(`${this.baseUrl}user/login`, $userCredentials);
+    return this.http.post(`${this.baseUrl}api/login`, $userCredentials);
   }
   register($userData): Observable<any> {
-    return this.http.post(`${this.baseUrl}user/Register`, $userData);
+    return this.http.post(`${this.baseUrl}api/Register`, $userData);
   }
 
   handleError(error: HttpErrorResponse){

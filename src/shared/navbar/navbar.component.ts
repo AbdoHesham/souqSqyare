@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { NavService } from '../service/service-nav/nav.service';
 
 import { AuthService } from '../service/Auth-service/auth.service';
+import { SearchService } from '../service/search-service/search.service';
+
 import { Iproduct } from '../models/Iproduct';
 
 @Component({
@@ -20,7 +22,9 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     public nav: NavService,
-    private authService: AuthService
+    private authService: AuthService,
+    public SearchService: SearchService
+
   ) {}
 
   ngOnInit(): void {

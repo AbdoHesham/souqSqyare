@@ -10,7 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddressesComponent } from './addresses/addresses.component';
 import { CliamsComponent } from './cliams/cliams.component';
-import { AuthGuard } from 'src/shared/service/Auth-service/auth-guard.service';
+// import { AuthGuard } from 'src/shared/service/Auth-service/auth-guard.service';
 
 
 @NgModule({

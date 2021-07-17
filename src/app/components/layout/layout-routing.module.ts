@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../profile/guard/auth.guard';
 import { AboutUSComponent } from '../about-us/about-us.component';
 import { CartComponent } from '../cart/cart.component';
 import { CheckOutComponent } from '../cart/check-out/check-out.component';
@@ -29,7 +30,7 @@ const routes: Routes = [
 { path: 'thanks', component: ThanksComponent },
 
 
-{ path: '', loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule) },
+{ path: '', loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule) ,canActivate :[AuthGuard] },
 
 ];
 
